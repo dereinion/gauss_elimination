@@ -67,7 +67,8 @@ int find_max(const rmatrix& A, int k){
 bool gauss_elimination(rmatrix& A, rvector& b) {
 	int n = A.size();
 	double det = 1; // Визначник
-
+	int swap_count=0;
+	
 	cout << "A before elimination" << endl;
 	print(A, b);
 
@@ -78,7 +79,8 @@ bool gauss_elimination(rmatrix& A, rvector& b) {
 			return true;
 		} // Якщо матриця вироджена
 		swap(A[k], A[imax]); swap(b[k], b[imax]); // Перестановка відповідних елементів в матриці А та векторі b
-
+		if (imax != k) ++swap_count; 
+			
 		for (int i = k + 1; i < n; ++i) {
 			double c = -A[i][k] / A[k][k]; // Коефіцієнт для зведення  
 
@@ -95,7 +97,8 @@ bool gauss_elimination(rmatrix& A, rvector& b) {
 		print(A, b);
 	}
 	else cout << "A is empty" << endl;
-
+	
+	if (swap_count % 2) det *= -1;
 	cout << endl << "Det A = " << det << endl;
 	return false; // Якщо невироджена
 }
