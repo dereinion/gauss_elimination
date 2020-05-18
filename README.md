@@ -1,1 +1,1 @@
-# This program executes Gaussian elimination with partial pivoting, calculates determinat and runs series of tests
+### This program executes Gaussian elimination with partial pivoting, calculates determinant and runs series of tests
